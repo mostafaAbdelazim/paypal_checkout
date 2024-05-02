@@ -113,8 +113,7 @@ class PaypalCheckoutState extends State<PaypalCheckout> {
         body: Stack(
           children: <Widget>[
             InAppWebView(
-              initialUrlRequest:
-                  URLRequest(url: WebUri.uri(Uri.parse(checkoutUrl!))),
+              initialUrlRequest: URLRequest(url: Uri.parse(checkoutUrl!)),
               onWebViewCreated: (InAppWebViewController controller) {
                 webView = controller;
               },
