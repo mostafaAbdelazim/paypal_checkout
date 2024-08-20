@@ -14,7 +14,7 @@ class PaypalCheckout extends StatefulWidget {
   final bool? sandboxMode;
 
   const PaypalCheckout({
-    Key? key,
+    super.key,
     this.onSuccess,
     this.onError,
     this.onCancel,
@@ -25,7 +25,7 @@ class PaypalCheckout extends StatefulWidget {
     required this.secretKey,
     this.sandboxMode = false,
     this.note = '',
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -113,7 +113,9 @@ class PaypalCheckoutState extends State<PaypalCheckout> {
         body: Stack(
           children: <Widget>[
             InAppWebView(
-              initialUrlRequest: URLRequest(url: Uri.parse(checkoutUrl!)),
+              initialUrlRequest: URLRequest(
+                url: WebUri(checkoutUrl!),
+              ),
               onWebViewCreated: (InAppWebViewController controller) {
                 webView = controller;
               },
